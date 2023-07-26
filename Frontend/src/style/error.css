@@ -1,5 +1,5 @@
 .error {
-  color: var(--secondary);
+  color: var(--grey);
   height: 570px;
   display: flex;
   flex-direction: column;
@@ -26,15 +26,15 @@
 }
 
 .error-link {
-  color: var(--secondary);
+  color: var(--grays);
   font-size: 14px;
   font-weight: 500;
   margin-top: 133px;
 }
 
 .error-link:hover {
-  color: var(--secondary);
-  border-bottom: var(--secondary) 1px solid;
+  color: var(--light-green);
+  border-bottom: var(--light-green) 1px solid;
 }
 
 @media screen and (max-width: 950px) {

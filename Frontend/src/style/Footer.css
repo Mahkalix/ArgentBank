@@ -1,0 +1,14 @@
+footer {
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid var(--grey);
+  padding: 2rem 0 1.5rem;
+}
+
+.footer-text {
+  margin: 0;
+  padding: 0;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 500;
+  color: var(--black);
+}

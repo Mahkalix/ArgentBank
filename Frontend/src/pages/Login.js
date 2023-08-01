@@ -1,11 +1,13 @@
 import React from "react";
+import "../style/main.css";
+import "../style/login.css";
 
-const SignIn = () => {
+const Login = () => {
   return (
     <>
       <main class="main bg-dark">
         <section class="sign-in-content">
-          <i class="fa fa-user-circle sign-in-icon"></i>
+          <i class="sign-in-icon"></i>
           <h1>Sign In</h1>
           <form>
             <div class="input-wrapper">
@@ -25,7 +27,7 @@ const SignIn = () => {
               Sign In
             </a>
 
-            <button class="sign-in-button">Sign In</button>
+            <button class="sign-in-button"> Sign Out</button>
           </form>
         </section>
       </main>
@@ -33,4 +35,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Login;

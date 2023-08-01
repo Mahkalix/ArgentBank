@@ -3,31 +3,27 @@ import "../style/header.css";
 import Logo from "../img/argentBankLogo.png";
 import { Link } from "react-router-dom";
 
-const header = () => {
+const Header = () => {
   return (
     <>
-      <nav class="main-nav">
+      <nav className="main-nav">
         <Link to="/">
-          <div class="main-nav-logo">
+          <div className="main-nav-logo">
             <img
-              class="main-nav-logo-image"
+              className="main-nav-logo-image"
               src={Logo}
               alt="Argent Bank Logo"
             />
-            <h1 class="sr-only">Argent Bank</h1>
+            <h1 className="sr-only">Argent Bank</h1>
           </div>
         </Link>
-        <div>
-          <Link to="/Error">
-            <div class="main-nav-item" href="./sign-in.html">
-              <i class="fa fa-user-circle"></i>
-              Sign In
-            </div>
-          </Link>
-        </div>
+
+        <Link to="/login">
+          <div className="main-nav-item">Sign In</div>
+        </Link>
       </nav>
     </>
   );
 };
 
-export default header;
+export default Header;

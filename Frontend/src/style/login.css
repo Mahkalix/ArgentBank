@@ -1,0 +1,142 @@
+.bg-dark {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  height: 500px;
+
+  background-color: var(--white);
+}
+
+.sign-in-button {
+  transition: all 1s ease-out;
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  background-color: var(--green);
+  border: 2px solid white;
+  color: var(--black);
+  border-radius: 20px;
+  background-color: transparent;
+  box-shadow: inset 52px 10px var(--green);
+}
+
+.sign-in-button:hover {
+  border: 2px solid rgb(0, 0, 0);
+  background-color: transparent;
+  box-shadow: inset 140px 10px var(--green);
+}
+
+.sign-in-content {
+  box-shadow: 12px 13px 20px rgb(0 0 0 / 6%);
+  border-radius: 15px;
+  box-sizing: border-box;
+  background-color: var(--grey);
+
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 3rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: black;
+}
+.sign-in-icon {
+  font-size: 5rem;
+}
+
+.input-remember {
+  display: flex;
+}
+
+.input-remember label {
+  margin-left: 0.25rem;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.input-wrapper label {
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+
+.input-wrapper input {
+  padding: 5px;
+  font-size: 1.2rem;
+  background-color: var(--white);
+  border-radius: 5px;
+}
+
+.account {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--black);
+  background-color: var(--white);
+  width: 80%;
+  margin: 0 auto;
+  flex-direction: column;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.account-amount {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.account-amount-description {
+  margin: 0;
+}
+
+.account-title {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.account-content-wrapper {
+  width: 100%;
+  flex: 1;
+}
+
+.edit-button {
+  border-color: var(--light-green);
+  background-color: var(--light-green);
+  color: var(--white);
+  font-weight: bold;
+  padding: 10px;
+}
+
+.header {
+  color: var(--white);
+  margin-bottom: 2rem;
+}
+
+.transaction-button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: var(--light-green);
+  background-color: var(--light-green);
+  color: var(--white);
+}

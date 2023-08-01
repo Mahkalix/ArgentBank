@@ -1,5 +1,5 @@
 .error {
-  color: var(--grey);
+  color: var(--black);
   height: 570px;
   display: flex;
   flex-direction: column;

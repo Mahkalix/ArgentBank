@@ -11,78 +11,96 @@ body {
   min-height: 100vh;
 }
 
-.bg-dark {
-  background-color: var(--black);
+.main {
+  display: flex;
+  height: 850px;
+  flex: 1;
+  background: transparent;
 }
-
+.banktree {
+  object-fit: cover;
+  width: 100%;
+  overflow: hidden;
+}
 .hero {
-  background-image: url("../img/bank-tree.jpeg");
-  background-position: 0 -50px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 300px;
-  position: relative;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+}
+.slogan {
+  text-align: left;
+  color: var(--white);
+  font-size: 70px;
+  position: absolute;
+  top: 120px;
+  left: 32px;
+  font-family: "Assistant", sans-serif;
 }
 
+.little-slogan {
+  font-weight: 800;
+  color: var(--green);
+  position: absolute;
+  font-family: "Assistant", sans-serif;
+  top: 100px;
+  left: 34px;
+}
 .hero-content {
-  position: relative;
-  top: 2rem;
-  width: 200px;
-  background: var(--white);
-  padding: 2rem;
+  transition: all 1s ease-out;
+  border: rgb(255, 255, 255) 3px solid;
+  box-shadow: inset 52px 10px var(--green);
+  background: transparent;
+  font-weight: 700;
+  margin-top: 40px;
+  color: var(--black);
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
   text-align: left;
-  margin: 0 auto;
+  position: absolute;
+  top: 400px;
+  left: 30px;
+  width: 300px;
   border-radius: 20px;
+}
+
+.hero-content:hover {
+  border: rgb(0, 0, 0) 3px solid;
+  box-shadow: inset 250px 10px var(--green);
+  background-color: var(--white);
+  color: var(--black);
+}
+.arrow {
+  width: 20px;
+  margin-left: 20px;
 }
 
 .hero-content .subtitle {
   font-weight: bold;
   font-size: 1rem;
+  font-size: 1.5rem;
   margin: 0;
 }
 
 .hero-content .text {
   margin-bottom: 0;
   font-size: 0.9rem;
-}
-
-@media (min-width: 920px) {
-  .hero {
-    height: 400px;
-    background-position: 0% 33%;
-  }
-
-  .hero-content {
-    position: absolute;
-    top: 50px;
-    right: 50px;
-    width: 300px;
-    margin: 2rem;
-  }
-
-  .hero-content .subtitle {
-    font-size: 1.5rem;
-  }
-
-  .hero-content .text {
-    font-size: 1.2rem;
-  }
+  font-size: 1.2rem;
 }
 
 .features {
   display: flex;
-  flex-direction: column;
-}
-
-@media (min-width: 920px) {
-  .features {
-    flex-direction: row;
-  }
+  flex-direction: row;
 }
 
 .feature-icon {
   width: 100px;
-  border: 10px solid var(--light-green);
+  border: 10px solid var(--green);
   border-radius: 50%;
   padding: 1rem;
 }
@@ -221,5 +239,14 @@ body {
 
   .transaction-button {
     width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banktree {
+    height: 800px;
+  }
+  .features {
+    flex-direction: column;
   }
 }

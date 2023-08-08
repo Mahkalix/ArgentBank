@@ -22,11 +22,9 @@ const Login = () => {
               <input type="checkbox" id="remember-me" />
               <label for="remember-me">Remember me</label>
             </div>
-
             <a href="./user.html" className="sign-in-button">
               Sign In
             </a>
-
             <button className="sign-in-button"> Sign Out</button>
           </form>
         </section>

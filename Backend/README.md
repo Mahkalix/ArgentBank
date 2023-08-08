@@ -29,13 +29,12 @@ mongo --version
 1. Run the following commands:
 
 ```bash
-
-
 # Install dependencies
 npm install
 
-1- nvs add 12.12
-2- nvs use 12.12
+nvs add 12.12
+nvs use 12.12
+
 
 # Start local dev server
 npm run dev:server

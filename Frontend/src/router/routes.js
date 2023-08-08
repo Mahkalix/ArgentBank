@@ -4,7 +4,7 @@ import Home from "../pages/Home";
 import Error from "../pages/Error";
 import Login from "../pages/Login";
 
-const route = () => {
+const routes = () => {
   return (
     <>
       <Routes>
@@ -16,4 +16,4 @@ const route = () => {
   );
 };
 
-export default route;
+export default routes;

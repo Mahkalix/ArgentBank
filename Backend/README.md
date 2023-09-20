@@ -32,9 +32,9 @@ mongo --version
 # Install dependencies
 npm install
 
+
 nvs add 12.12
 nvs use 12.12
-
 
 # Start local dev server
 npm run dev:server

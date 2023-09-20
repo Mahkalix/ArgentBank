@@ -17,7 +17,7 @@ const Header = () => {
             <h1 className="sr-only">Argent Bank</h1>
           </div>
         </Link>
-        <Link to="/login">
+        <Link to="/signin">
           <div className="main-nav-item">Sign In</div>
         </Link>
       </nav>

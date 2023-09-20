@@ -19,7 +19,7 @@ const Main = () => {
             You Want <br />
             To Use
           </h1>
-          <Link to="/login">
+          <Link to="/signin">
             <div className="hero-content">
               <p>JOIN 5M ARGENTBANK CLIENTS</p>
               <img className="arrow" src={Arrow} alt="arrow" />

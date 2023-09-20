@@ -1,14 +1,16 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import "../style/main.css";
 import "../style/login.css";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
-  const [rememberMe, setRememberMe] = useState(false); // Added state for "Remember Me"
+  const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -30,14 +32,22 @@ const Login = () => {
         const dataUser = await response.json();
         console.log(dataUser);
 
-        // Enregistrement du token d'authentification et du login dans le stockage local
+        // Enregistrement du token d'authentification dans le stockage local
         localStorage.setItem("token", dataUser.body?.token);
-        localStorage.setItem("login", true);
+
+        // Si "Remember Me" est coché, enregistrez également l'email et le mot de passe
+        if (rememberMe) {
+          localStorage.setItem("email", email);
+          localStorage.setItem("password", password);
+        } else {
+          // Si "Remember Me" n'est pas coché, supprimez les valeurs précédemment stockées
+          localStorage.removeItem("email");
+          localStorage.removeItem("password");
+        }
 
         navigate("/");
       } else {
         localStorage.removeItem("token");
-        localStorage.removeItem("login");
         setErrorMsg("Erreur dans l’identifiant ou le mot de passe"); // Update the message after the timeout
         console.log(
           "Connexion Impossible : Erreur Identifiant ou Mot de passe"
@@ -47,6 +57,26 @@ const Login = () => {
       console.log(e);
     }
   }
+
+  useEffect(() => {
+    // Récupérer l'état de "Remember Me" depuis le localStorage
+    const rememberMeFromStorage = localStorage.getItem("rememberMe");
+
+    // Si "Remember Me" est stocké dans le localStorage et est égal à "true", cochez la case
+    if (rememberMeFromStorage === "true") {
+      setRememberMe(true);
+    }
+
+    // Récupérer l'email et le mot de passe depuis le localStorage
+    const emailFromStorage = localStorage.getItem("email");
+    const passwordFromStorage = localStorage.getItem("password");
+
+    // Si des valeurs sont stockées dans le localStorage, pré-remplissez les champs
+    if (emailFromStorage && passwordFromStorage) {
+      setEmail(emailFromStorage); // Pré-remplir l'email
+      setPassword(passwordFromStorage); // Pré-remplir le mot de passe
+    }
+  }, []);
 
   return (
     <>
@@ -68,22 +98,34 @@ const Login = () => {
             <div className="input-wrapper">
               <label htmlFor="password">Password</label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            {/* <div className="input-remember">
+
+            <div className="input-remember">
               <input
                 type="checkbox"
                 id="remember-me"
                 checked={rememberMe}
-                onChange={() => setRememberMe(!rememberMe)}
+                onChange={(e) => setRememberMe(e.target.checked)}
               />
-              <label htmlFor="remember-me">Remember me</label> */}
-            {/* </div> */}
+
+              <label htmlFor="remember-me">Remember me</label>
+            </div>
+
+            <div className="input-show-password">
+              <input
+                type="checkbox"
+                id="show-password"
+                checked={showPassword}
+                onChange={() => setShowPassword(!showPassword)}
+              />
+              <label htmlFor="show-password">Show Password</label>
+            </div>
             <button onClick={handleSubmit} className="sign-in-button">
               Sign In
             </button>
@@ -95,4 +137,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;

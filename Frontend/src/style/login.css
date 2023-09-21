@@ -6,36 +6,34 @@
   background-color: var(--grey);
 }
 
+.erreur-msg {
+  color: #ce2029;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .sign-in-button {
-  transition: all 1s ease-out;
-  display: block;
   width: 100%;
-  padding: 8px;
+  padding: 6px;
   font-size: 1.1rem;
-  font-weight: bold;
+  font-weight: 700;
   margin-top: 1rem;
-  background-color: var(--green);
-  border: 2px solid white;
-  color: var(--black);
-  border-radius: 10px;
-  background-color: transparent;
-  box-shadow: inset 52px 10px var(--green);
+  color: var(--white);
+  background-color: var(--light-green);
 }
 
 .sign-in-button:hover {
-  border: 2px solid rgb(0, 0, 0);
-  background-color: transparent;
-  box-shadow: inset 140px 10px var(--green);
+  border-color: var(--green);
+  background-color: var(--green);
 }
 
 .sign-in-content {
   box-shadow: 12px 13px 20px rgb(0 0 0 / 6%);
-  border-radius: 10px;
   box-sizing: border-box;
   background-color: var(--white);
   width: 300px;
   margin: 0 auto;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,9 +74,8 @@ h1 {
 .input-wrapper input {
   padding: 5px;
   font-size: 1.2rem;
-  border: 1px solid black;
+  border: 1px solid var(--black);
   background-color: var(--white);
-  border-radius: 5px;
 }
 
 .account {

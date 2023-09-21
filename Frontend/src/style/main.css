@@ -43,7 +43,7 @@ body {
 
 .little-slogan {
   font-weight: 800;
-  color: var(--green);
+  color: var(--light-green);
   position: absolute;
   font-family: "Assistant", sans-serif;
   top: 100px;
@@ -51,7 +51,7 @@ body {
 }
 .hero-content {
   transition: all 1s ease-out;
-  border: rgb(255, 255, 255) 3px solid;
+  border: rgb(255, 255, 255) 2px solid;
   box-shadow: inset 52px 10px var(--green);
   background: transparent;
   font-weight: 700;
@@ -67,12 +67,11 @@ body {
   top: 400px;
   left: 30px;
   width: 300px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .hero-content:hover {
-  border: rgb(0, 0, 0) 3px solid;
-  box-shadow: inset 250px 10px var(--green);
+  box-shadow: inset 350px 10px var(--green);
   background-color: var(--white);
   color: var(--black);
 }

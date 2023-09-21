@@ -4,7 +4,7 @@ import "../style/main.css";
 import "../style/login.css";
 import { useNavigate } from "react-router-dom";
 
-const SignIn = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const [password, setPassword] = useState("");
@@ -37,15 +37,14 @@ const SignIn = () => {
 
         // Si "Remember Me" est coché, enregistrez également l'email et le mot de passe
         if (rememberMe) {
+          localStorage.setItem("rememberMe", "true");
           localStorage.setItem("email", email);
-          localStorage.setItem("password", password);
         } else {
           // Si "Remember Me" n'est pas coché, supprimez les valeurs précédemment stockées
           localStorage.removeItem("email");
-          localStorage.removeItem("password");
         }
 
-        navigate("/");
+        navigate("/profile");
       } else {
         localStorage.removeItem("token");
         setErrorMsg("Erreur dans l’identifiant ou le mot de passe"); // Update the message after the timeout
@@ -69,12 +68,10 @@ const SignIn = () => {
 
     // Récupérer l'email et le mot de passe depuis le localStorage
     const emailFromStorage = localStorage.getItem("email");
-    const passwordFromStorage = localStorage.getItem("password");
 
     // Si des valeurs sont stockées dans le localStorage, pré-remplissez les champs
-    if (emailFromStorage && passwordFromStorage) {
+    if (emailFromStorage) {
       setEmail(emailFromStorage); // Pré-remplir l'email
-      setPassword(passwordFromStorage); // Pré-remplir le mot de passe
     }
   }, []);
 
@@ -105,7 +102,6 @@ const SignIn = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-
             <div className="input-remember">
               <input
                 type="checkbox"
@@ -116,7 +112,6 @@ const SignIn = () => {
 
               <label htmlFor="remember-me">Remember me</label>
             </div>
-
             <div className="input-show-password">
               <input
                 type="checkbox"
@@ -126,6 +121,7 @@ const SignIn = () => {
               />
               <label htmlFor="show-password">Show Password</label>
             </div>
+
             <button onClick={handleSubmit} className="sign-in-button">
               Sign In
             </button>
@@ -137,4 +133,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Login;

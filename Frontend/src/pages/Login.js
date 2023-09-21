@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import "../style/main.css";
 import "../style/login.css";
 import { useNavigate } from "react-router-dom";
+// import { useSelector, useDispatch } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +12,9 @@ const Login = () => {
   const [errorMsg, setErrorMsg] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  // const Login = useSelector((state) => state.login);
+  // console.log(Login);
 
   async function handleSubmit(e) {
     e.preventDefault();

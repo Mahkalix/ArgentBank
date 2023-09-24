@@ -14,7 +14,6 @@ const Header = ({ token, handleLogout }) => {
             src={Logo}
             alt="Argent Bank Logo"
           />
-          <h1 className="sr-only">Argent Bank</h1>
         </div>
       </Link>
       <Navigation token={token} handleLogout={handleLogout} />

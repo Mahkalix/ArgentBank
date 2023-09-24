@@ -13,8 +13,6 @@ const Navigation = () => {
     dispatch(setLogout({ token }));
   };
 
-  console.log(dataUser);
-
   return (
     <>
       {token && (

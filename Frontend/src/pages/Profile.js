@@ -1,7 +1,48 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../style/profile.css";
+import Account from "../components/account";
+import { useSelector, useDispatch } from "react-redux";
+import setGetProfile from "../features/profileSlice";
 
 const Profile = () => {
+  const dispatch = useDispatch();
+  const dataUser = useSelector((state) => state.profile);
+  const token = useSelector((state) => state.auth.token);
+
+  async function handleSubmit() {
+    try {
+      const data = await fetch("http://localhost:3001/api/v1/user/profile", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          accept: "application/json",
+        },
+        body: JSON.stringify({
+          status: 0,
+          message: "string",
+          body: {
+            id: "string",
+            email: "string",
+          },
+        }),
+      });
+
+      if (data.ok) {
+        dispatch(setGetProfile({ data }));
+      } else {
+        console.log(
+          "Connexion Impossible : Erreur Identifiant ou Mot de passe"
+        );
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+    handleSubmit();
+  }, []);
+
   return (
     <>
       <section className="profile">
@@ -9,41 +50,32 @@ const Profile = () => {
           <h1>
             Welcome back
             <br />
-            Tony Jarvis!
+            {dataUser.firstName + " " + dataUser.lastName + " !"}
           </h1>
           <button className="edit-button">Edit className</button>
         </article>
-        <h2 className="sr-only">Accounts</h2>
-        <article className="account">
-          <div className="account-content-wrapper">
-            <h3 className="account-title">Argent Bank Checking (x8349)</h3>
-            <p className="account-amount">$2,082.79</p>
-            <p className="account-amount-description">Available Balance</p>
-          </div>
-          <div className="account-content-wrapper cta">
-            <button className="transaction-button">View transactions</button>
-          </div>
-        </article>
-        <article className="account">
-          <div className="account-content-wrapper">
-            <h3 className="account-title">Argent Bank Savings (x6712)</h3>
-            <p className="account-amount">$10,928.42</p>
-            <p className="account-amount-description">Available Balance</p>
-          </div>
-          <div className="account-content-wrapper cta">
-            <button className="transaction-button">View transactions</button>
-          </div>
-        </article>
-        <article className="account">
-          <div className="account-content-wrapper">
-            <h3 className="account-title">Argent Bank Credit Card (x8349)</h3>
-            <p className="account-amount">$184.30</p>
-            <p className="account-amount-description">Current Balance</p>
-          </div>
-          <div className="account-content-wrapper cta">
-            <button className="transaction-button">View transactions</button>
-          </div>
-        </article>
+        <h2 className="account-title">Accounts</h2>
+        <Account
+          state={{
+            accountNumber: "Argent Bank Checking (x8349)",
+            balance: "$2,082.79",
+            status: "Available Balance",
+          }}
+        />
+        <Account
+          state={{
+            accountNumber: "Argent Bank Savings (x6712)",
+            balance: "$10,928.42",
+            status: "Available Balance",
+          }}
+        />
+        <Account
+          state={{
+            accountNumber: "Argent Bank Credit Card (x8349)",
+            balance: "$184.30",
+            status: "Current Balance",
+          }}
+        />
       </section>
     </>
   );

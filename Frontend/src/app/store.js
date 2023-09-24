@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "../features/authSlice";
 import bankSlice from "../features/bankSlice";
-import userSlice from "../features/userSlice";
+import profileSlice from "../features/profileSlice";
 
 export default configureStore({
   reducer: {
     auth: authSlice,
     bank: bankSlice,
-    user: userSlice,
+    profile: profileSlice,
   },
 });

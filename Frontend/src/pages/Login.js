@@ -3,22 +3,22 @@ import { useEffect } from "react";
 import "../style/main.css";
 import "../style/login.css";
 import { useNavigate } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setSignIn } from "../features/authSlice";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  // const Login = useSelector((state) => state.login);
-  // console.log(Login);
+  const [errorMsg, setErrorMsg] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log(email);
     try {
       const response = await fetch("http://localhost:3001/api/v1/user/login", {
         method: "POST",
@@ -31,20 +31,16 @@ const Login = () => {
           password: password,
         }),
       });
-      console.log(response);
+
       if (response.status === 200) {
         const dataUser = await response.json();
-        console.log(dataUser);
-
-        // Enregistrement du token d'authentification dans le stockage local
+        dispatch(setSignIn({ dataUser }));
         localStorage.setItem("token", dataUser.body?.token);
 
-        // Si "Remember Me" est coché, enregistrez également l'email et le mot de passe
         if (rememberMe) {
           localStorage.setItem("rememberMe", "true");
           localStorage.setItem("email", email);
         } else {
-          // Si "Remember Me" n'est pas coché, supprimez les valeurs précédemment stockées
           localStorage.removeItem("email");
         }
 
@@ -62,20 +58,13 @@ const Login = () => {
   }
 
   useEffect(() => {
-    // Récupérer l'état de "Remember Me" depuis le localStorage
     const rememberMeFromStorage = localStorage.getItem("rememberMe");
-
-    // Si "Remember Me" est stocké dans le localStorage et est égal à "true", cochez la case
     if (rememberMeFromStorage === "true") {
       setRememberMe(true);
     }
-
-    // Récupérer l'email et le mot de passe depuis le localStorage
     const emailFromStorage = localStorage.getItem("email");
-
-    // Si des valeurs sont stockées dans le localStorage, pré-remplissez les champs
     if (emailFromStorage) {
-      setEmail(emailFromStorage); // Pré-remplir l'email
+      setEmail(emailFromStorage);
     }
   }, []);
 

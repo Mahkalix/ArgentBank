@@ -4,10 +4,18 @@ export const authSlice = createSlice({
   name: "auth",
   initialState: { token: null },
   reducers: {
-    setAuth(state, { payload }) {
-      state.auth = payload;
+    setSignIn(state, { payload }) {
+      state.token = payload.dataUser.body?.token;
+      state.dataUser = payload.dataUser; // Stockez les données de l'utilisateur lors de la connexion
+    },
+
+    setLogout: (state) => {
+      state.token = null;
+      state.dataUser = null; // Réinitialisez également les données de l'utilisateur lors de la déconnexion
     },
   },
 });
-export const { setAuth } = authSlice.actions;
+
+export const { setSignIn } = authSlice.actions;
+export const { setLogout } = authSlice.actions;
 export default authSlice.reducer;

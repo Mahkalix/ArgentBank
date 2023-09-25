@@ -6,12 +6,7 @@ header {
   height: 80px;
 }
 
-header-logo {
-  display: flex;
-  align-items: center;
-}
-
-header-logo-image {
-  max-width: 100%;
+header img {
   width: 200px;
+  padding-top: 5px;
 }

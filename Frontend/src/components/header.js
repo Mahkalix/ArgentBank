@@ -8,13 +8,7 @@ const Header = ({ token, handleLogout }) => {
   return (
     <header>
       <Link to="/">
-        <div className="main-nav-logo">
-          <img
-            className="main-nav-logo-image"
-            src={Logo}
-            alt="Argent Bank Logo"
-          />
-        </div>
+        <img src={Logo} alt="Argent Bank Logo" />
       </Link>
       <Navigation token={token} handleLogout={handleLogout} />
     </header>

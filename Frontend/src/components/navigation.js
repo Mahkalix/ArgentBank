@@ -21,7 +21,7 @@ const Navigation = () => {
       {token && (
         <Link className="main-nav-item" to="/profile">
           <img src={User} alt="Mon SVG" />
-          {dataUser.firstName + " " + dataUser.lastName}
+          {dataUser.userName}
         </Link>
       )}
       <Link

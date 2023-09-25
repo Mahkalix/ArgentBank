@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../style/profile.css";
 import Account from "../components/account";
 import { useSelector, useDispatch } from "react-redux";
 import { setGetProfile } from "../features/profileSlice";
+import ModalEditUsername from "../components/ModalEditUsername";
 
 const Profile = () => {
   const dispatch = useDispatch();
   const dataUser = useSelector((state) => state.profile);
   const token = useSelector((state) => state.auth.token);
+  const [toggleEditUsername, setToggleEditUsername] = useState(false);
 
   async function fetchData() {
     try {
@@ -30,7 +32,6 @@ const Profile = () => {
       if (data.status === 200) {
         const responseData = await data.json();
         dispatch(setGetProfile({ data: responseData }));
-        localStorage.setItem("dataProfile", JSON.stringify(responseData));
       } else if (data.status === 401) {
         console.log(
           "Erreur d'authentification : Identifiant ou Mot de passe incorrect"
@@ -44,15 +45,12 @@ const Profile = () => {
   }
 
   useEffect(() => {
-    // Chargement des données depuis le LocalStorage (s'il existe)
-    const savedData = localStorage.getItem("dataProfile");
-    if (savedData) {
-      const parsedData = JSON.parse(savedData);
-      dispatch(setGetProfile({ data: parsedData }));
-    }
-
     fetchData();
   });
+
+  const handleEditUsername = () => {
+    setToggleEditUsername(!toggleEditUsername);
+  };
 
   return (
     <>
@@ -63,7 +61,12 @@ const Profile = () => {
             <br />
             {dataUser.firstName + " " + dataUser.lastName + " !"}
           </h1>
-          <button className="edit-button">Edit className</button>
+          <button onClick={handleEditUsername} className="edit-button">
+            {!toggleEditUsername ? "Edit " : "Close"}
+          </button>
+          {toggleEditUsername && (
+            <ModalEditUsername onSubmit={handleEditUsername} />
+          )}
         </article>
         <h2 className="account-title">Accounts</h2>
         <Account

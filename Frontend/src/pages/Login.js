@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
 import "../style/main.css";
 import "../style/login.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setSignIn, setSignOut } from "../features/authSlice";
+import { setSignIn } from "../features/authSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -47,7 +46,7 @@ const Login = () => {
         navigate("/profile");
       } else {
         localStorage.removeItem("token");
-        setErrorMsg("Erreur dans l’identifiant ou le mot de passe"); // Update the message after the timeout
+        setErrorMsg("Erreur dans l’identifiant ou le mot de passe");
         console.log(
           "Connexion Impossible : Erreur Identifiant ou Mot de passe"
         );

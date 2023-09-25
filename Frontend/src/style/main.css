@@ -108,7 +108,7 @@ body {
 
 .features-title {
   display: flex;
-  color: #2b2227;
+  color: var(--black);
   flex-direction: row;
   margin-top: 20px;
   font-size: 40px;

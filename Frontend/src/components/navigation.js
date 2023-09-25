@@ -1,26 +1,29 @@
 import React from "react";
-import "../style/header.css";
+import "../style/navigation.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { setLogout } from "../features/authSlice";
+import { setSignOut } from "../features/authSlice";
+import User from "../img/svg/user.svg";
 
 const Navigation = () => {
   const token = useSelector((state) => state.auth.token);
-  const dataUser = useSelector((state) => state.auth.dataUser);
+  const dataUser = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
+  // const token = localStorage.getItem("token");
   const handleLogout = () => {
-    dispatch(setLogout({ token }));
+    localStorage.clear();
+    dispatch(setSignOut({ token }));
   };
 
   return (
-    <>
+    <section className="navigation">
       {token && (
         <Link className="main-nav-item" to="/profile">
-          <button className="nav-button">{dataUser.firstName}</button>
+          <img src={User} alt="Mon SVG" />
+          {dataUser.firstName + " " + dataUser.lastName}
         </Link>
       )}
-
       <Link
         className="main-nav-item"
         to={token ? "/" : "/login"}
@@ -28,7 +31,7 @@ const Navigation = () => {
       >
         {token ? "Sign Out" : "Sign In"}
       </Link>
-    </>
+    </section>
   );
 };
 

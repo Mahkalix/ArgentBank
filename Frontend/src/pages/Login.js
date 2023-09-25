@@ -4,7 +4,7 @@ import "../style/main.css";
 import "../style/login.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setSignIn } from "../features/authSlice";
+import { setSignIn, setSignOut } from "../features/authSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -56,17 +56,6 @@ const Login = () => {
       console.log(e);
     }
   }
-
-  useEffect(() => {
-    const rememberMeFromStorage = localStorage.getItem("rememberMe");
-    if (rememberMeFromStorage === "true") {
-      setRememberMe(true);
-    }
-    const emailFromStorage = localStorage.getItem("email");
-    if (emailFromStorage) {
-      setEmail(emailFromStorage);
-    }
-  }, []);
 
   return (
     <>

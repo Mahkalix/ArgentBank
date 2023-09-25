@@ -6,24 +6,6 @@ header {
   height: 80px;
 }
 
-.main-nav-item {
-  background-color: var(--light-green);
-  color: rgb(255, 255, 255);
-  margin-right: 0.5rem;
-  padding: 5px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.main-nav-item:hover {
-  background-color: var(--green);
-  color: rgb(255, 255, 255);
-  margin-right: 0.5rem;
-  padding: 5px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
 header-logo {
   display: flex;
   align-items: center;

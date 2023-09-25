@@ -27,8 +27,9 @@ const Main = () => {
           </Link>
         </div>
         <section className="features">
-          <h2 className="features-title">Features</h2>
-
+          <div className="grey">
+            <h2 className="features-title">Features</h2>
+          </div>
           <div className="row">
             <div className="feature-item">
               <img src={IconChat} alt="Chat Icon" className="feature-icon" />

@@ -50,9 +50,11 @@ body {
   color: #fff;
   font-weight: bold;
   padding: 10px;
+  margin-top: 20px;
 }
 /*  */
 .user {
+  font-size: 20px;
   color: #fff;
   margin-bottom: 2rem;
 }

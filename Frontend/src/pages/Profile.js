@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import "../style/profile.css";
 import Account from "../components/account";
 import { useSelector, useDispatch } from "react-redux";
-import setGetProfile from "../features/profileSlice";
+import { setGetProfile } from "../features/profileSlice";
 
 const Profile = () => {
   const dispatch = useDispatch();
   const dataUser = useSelector((state) => state.profile);
   const token = useSelector((state) => state.auth.token);
 
-  async function handleSubmit() {
+  async function fetchData() {
     try {
       const data = await fetch("http://localhost:3001/api/v1/user/profile", {
         method: "POST",
@@ -27,12 +27,16 @@ const Profile = () => {
         }),
       });
 
-      if (data.ok) {
-        dispatch(setGetProfile({ data }));
-      } else {
+      if (data.status === 200) {
+        const responseData = await data.json();
+        dispatch(setGetProfile({ data: responseData }));
+        localStorage.setItem("dataProfile", JSON.stringify(responseData));
+      } else if (data.status === 401) {
         console.log(
-          "Connexion Impossible : Erreur Identifiant ou Mot de passe"
+          "Erreur d'authentification : Identifiant ou Mot de passe incorrect"
         );
+      } else {
+        console.log("Connexion Impossible : Erreur inconnue");
       }
     } catch (e) {
       console.log(e);
@@ -40,8 +44,15 @@ const Profile = () => {
   }
 
   useEffect(() => {
-    handleSubmit();
-  }, []);
+    // Chargement des données depuis le LocalStorage (s'il existe)
+    const savedData = localStorage.getItem("dataProfile");
+    if (savedData) {
+      const parsedData = JSON.parse(savedData);
+      dispatch(setGetProfile({ data: parsedData }));
+    }
+
+    fetchData();
+  });
 
   return (
     <>

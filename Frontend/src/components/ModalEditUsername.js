@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setNewUserName } from "../features/profileSlice";
 
 const ModalEditUsername = () => {
-  const username = useSelector((state) => state.profile.userName);
+  const firstName = useSelector((state) => state.profile.firstName);
+  const lastName = useSelector((state) => state.profile.lastName);
   // console.log(username);
   const token = useSelector((state) => state.auth.token);
   const [newUsername, setNewUsername] = useState("");
@@ -31,7 +32,9 @@ const ModalEditUsername = () => {
               Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ userName: newUsername }),
+            body: JSON.stringify({
+              userName: newUsername,
+            }),
           }
         );
 
@@ -55,6 +58,15 @@ const ModalEditUsername = () => {
             value={newUsername}
             onChange={(e) => setNewUsername(e.target.value)}
           />
+        </div>
+        <div className="input-grey">
+          <label htmlFor="firstname">First Name</label>
+          <input disabled type="text" value={firstName} />
+        </div>
+        <div className="input-grey">
+          <label htmlFor="lastname">Last Name</label>
+
+          <input disabled type="text" value={lastName} />
         </div>
         <div className="error-msg">{errorMsg}</div>
         <button className={buttonClass} type="submit">

@@ -51,3 +51,26 @@
   padding: 10px;
   border-radius: 10px;
 }
+
+/* .gray-input {
+  background-color: lightgray;
+  color: #333;
+} */
+
+.input-grey {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.input-grey input {
+  padding: 5px;
+  font-size: 1.2rem;
+  border: 1px solid var(--black);
+  background-color: var(--grey);
+}
+
+.input-grey label {
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}

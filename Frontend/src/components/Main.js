@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import IconChat from "../img/icon-chat.png";
-import IconMoney from "../img/icon-money.png";
-import IconSecurity from "../img/icon-security.png";
-import BankTree from "../img/bank.jpg";
+import IconChat from "../img/icon-chat.webp";
+import IconMoney from "../img/icon-money.webp";
+import IconSecurity from "../img/icon-security.webp";
+import BankTree from "../img/bank.webp";
 import Arrow from "../img/svg/arrow.svg";
 import "../style/main.css";
 

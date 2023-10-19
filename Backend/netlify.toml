@@ -1,0 +1,5 @@
+[build]
+command = "node ./server/server.js"  # Remplacez par la commande de construction de votre backend
+functions = "netlify/functions"    # Emplacement de vos fonctions Netlify
+publish = "public"         # Emplacement de vos fichiers statiques (si applicable)
+runtime = "12.12"

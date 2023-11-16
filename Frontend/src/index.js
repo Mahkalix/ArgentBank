@@ -7,7 +7,7 @@ import store from "../src/app/store";
 import { BrowserRouter } from "react-router-dom";
 import "../src/style/index.css";
 
-const root = createRoot(document.getElementById("root")); // Use createRoot from react-dom/client
+const root = createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>

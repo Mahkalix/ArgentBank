@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import "../style/modaleditusername.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setNewUserName } from "../features/profileSlice";
